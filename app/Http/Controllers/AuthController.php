@@ -27,9 +27,11 @@ class AuthController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        $user = User::create($validated); // user creation attempt
+        $validated['password'] = Hash::make($validated['password']); // password encryption
 
-        $token = $user->createToken('employee-token')->plainTextToken; // plain text token creation
+        $user = User::create($validated); // user creation attempt
+        
+        $token = $user->createToken('api-token')->plainTextToken; // plain text token creation
 
         return response()->json(['user' => $user, 'token' => $token], 201); // user and associated token
     }
