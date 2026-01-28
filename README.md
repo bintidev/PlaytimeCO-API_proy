@@ -1,59 +1,186 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# PlaytimeCO API
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
 </p>
 
-## About Laravel
+## 🎮 Acerca de PlaytimeCO API
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**PlaytimeCO API** es una API REST desarrollada internamente para **Playtime Co**, la compañía de juguetes basada en el videojuego ***Poppy Playtime***. Esta API gestiona la autenticación y administración de usuarios del ecosistema de la plataforma.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Actualmente, la API se enfoca en proporcionar funcionalidades de **autenticación de usuarios**, permitiendo registro, inicio de sesión, cierre de sesión y consulta de usuarios.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🛠️ Tecnologías Utilizadas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Esta API está construida con las siguientes tecnologías:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **PHP** - Lenguaje de programación del servidor
+- **Laravel** - Framework web poderoso
+- **Composer** - Gestor de dependencias de PHP
+- **MySQL/MariaDB** - Base de datos relacional
+- **XAMPP** - Paquete que incluye Apache, MySQL y PHP
+- **Postman** - Cliente HTTP para pruebas
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📋 Requisitos Previos
 
-### Premium Partners
+Asegúrate de tener instalados los siguientes componentes:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- **XAMPP** (con Apache y MySQL habilitados)
+- **PHP 8.0** o superior
+- **Composer**
+- **Postman** (para pruebas de endpoints)
 
-## Contributing
+## ⚙️ Instalación y Configuración
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 1. Clonar el Repositorio
 
-## Code of Conduct
+```bash
+cd /home/binta/Documents/PlaytimeCO-API_proy/PlaytimeCO-api
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 2. Instalar Dependencias
 
-## Security Vulnerabilities
+```bash
+composer install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 3. Configurar el Archivo .env
 
-## License
+Copia el archivo de ejemplo y configura tus variables de entorno:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+cp .env.example .env
+```
+
+**Parámetros de Base de Datos a Configurar (usando XAMPP):**
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=playtime_co
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+> ⚠️ **Nota:** XAMPP utiliza `root` como usuario por defecto sin contraseña.
+
+### 4. Ejecutar Migraciones
+
+```bash
+php artisan migrate
+```
+
+### 5. Iniciar el Servidor de Desarrollo
+
+```bash
+php artisan serve
+```
+
+El servidor estará disponible en `http://localhost:8000`
+
+---
+
+## 📁 Estructura del Proyecto
+
+```
+PlaytimeCO-api/
+├── app/
+│   ├── Models/              # Modelos de datos
+│   │   └── User.php         # Modelo de usuario
+│   └── Http/
+│       └── Controllers/     # Controladores de la API
+│           └── AuthController.php  # Controlador de autenticación
+├── routes/
+│   ├── api.php              # Rutas de la API
+├── database/
+│   ├── migrations/          # Migraciones de base de datos
+│   └── seeders/             # Datos de prueba
+├── pictures/                # Capturas de pantalla de endpoints
+├── user.json                # Ejemplos de usuarios para pruebas
+└── README.md                # Este archivo
+```
+
+---
+
+## 🔐 Endpoints Disponibles
+
+La API proporciona los siguientes endpoints para la autenticación de usuarios:
+
+### 1. **Listar Todos los Usuarios**
+- **Ruta:** `GET /api/users`
+- **Descripción:** Obtiene la lista completa de todos los usuarios registrados en el sistema
+- **Autenticación:** No requerida
+- **Captura:** ![Users List](pictures/users-list.png)
+
+### 2. **Registro de Usuario**
+- **Ruta:** `POST /api/register`
+- **Descripción:** Crea una nueva cuenta de usuario y devuelve un token de autenticación
+- **Autenticación:** No requerida
+- **Campos requeridos:**
+  - `name` (string, máx. 255 caracteres)
+  - `email` (email único)
+  - `password` (string, mínimo 8 caracteres, debe estar confirmado)
+- **Captura:** ![Register](pictures/register-user.png)
+
+### 3. **Inicio de Sesión**
+- **Ruta:** `POST /api/login`
+- **Descripción:** Autentica un usuario existente validando sus credenciales
+- **Autenticación:** No requerida
+- **Campos requeridos:**
+  - `name` (string)
+  - `email` (email)
+  - `password` (string)
+- **Captura:** ![Login](pictures/login.png)
+
+### 4. **Cerrar Sesión**
+- **Ruta:** `POST /api/logout`
+- **Descripción:** Invalida todos los tokens del usuario autenticado, cerrando su sesión
+- **Autenticación:** Requerida (Bearer Token)
+- **Captura:** ![Logout](pictures/logout.png)
+
+---
+
+## 🧪 Pruebas con Postman
+
+### Pasos para Comenzar:
+
+1. **Abre Postman** en tu máquina
+2. **Crea una nueva colección** para la API de PlaytimeCO
+3. **Carga usuarios de ejemplo** desde el archivo `user.json`
+4. **Asegúrate de que XAMPP esté ejecutándose** (Apache y MySQL activos)
+
+### ⚠️ Importante: Gestión de Tokens
+
+Cuando realices un registro exitoso, recibirás un **token de autenticación**. Este token debe ser almacenado en las **cabeceras (Headers)** de todas las peticiones subsecuentes que lo requieran:
+
+```
+Authorization: Bearer {tu_token_aqui}
+```
+
+**Ejemplo en Postman:**
+1. Ve a la pestaña **Headers**
+2. Añade una nueva fila con:
+   - **Key:** `Authorization`
+   - **Value:** `Bearer 1|eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`
+
+> 💡 **Consejo:** Guarda el token en una variable de Postman para usarlo automáticamente en múltiples requests.
+
+---
+
+## 📊 Archivo de Ejemplo: user.json
+
+Utiliza el archivo `user.json` para importar usuarios de prueba en Postman:
+
+```json
+{
+  "name": "Usuario Prueba",
+  "email": "usuario@playtime.co",
+  "password": "SecurePassword123!",
+  "password_confirmation": "SecurePassword123!"
+}
+```

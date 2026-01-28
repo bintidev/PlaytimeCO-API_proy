@@ -1,0 +1,26 @@
+{
+    "user1": {
+        "name": "Claire Harper",
+        "email": "claire.harper@playtimeco.com",
+        "password": "harperpassword123",
+        "password_confirmation": "harperpassword123"
+    },
+    "user2": {
+        "name": "Eddie Ritterman",
+        "email": "eddie.ritterman@playtimeco.com",
+        "password": "rittermanpassword456",
+        "password_confirmation": "rittermanpassword456"
+    },
+    "user3": {
+        "name": "Patty Hall",
+        "email": "patty.hall@playtimeco.com",
+        "password": "hallpassword789",
+        "password_confirmation": "hallpassword789"
+    },
+    "user4": {
+        "name": "Harley Sawyer",
+        "email": "harley.sawyer@playtimeco.com",
+        "password": "sawyerpassword123",
+        "password_confirmation": "sawyerpassword123"
+    }
+}

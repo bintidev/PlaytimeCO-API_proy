@@ -12,6 +12,22 @@ use Illuminate\Support\Facades\Hash;
  */
 class AuthController extends Controller
 {
+
+    /**
+     * Validates data collected from registration form, ensuring
+     * there is no duplicated data before creating a new user
+     * 
+     * @param Request $request - request method
+     * @return int $status - status response
+     */
+    public function users()
+    {
+        $user = User::all(); // user creation attempt
+        
+        //$token = $user->createToken('employee-token')->plainTextToken; // plain text token creation
+
+        return response()->json(['users' => $user], 201); // user and associated token
+    }
     /**
      * Validates data collected from registration form, ensuring
      * there is no duplicated data before creating a new user
@@ -31,9 +47,9 @@ class AuthController extends Controller
 
         $user = User::create($validated); // user creation attempt
         
-        $token = $user->createToken('api-token')->plainTextToken; // plain text token creation
+        $token = $user->createToken('employee-token')->plainTextToken; // plain text token creation
 
-        return response()->json(['user' => $user, 'token' => $token], 201); // user and associated token
+        return response()->json(['users' => $user, 'token' => $token], 201); // user and associated token
     }
 
     /**
@@ -46,6 +62,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
+            'name' => 'required|string',
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
@@ -59,9 +76,7 @@ class AuthController extends Controller
             ]);
         }
 
-        $token = $user->createToken('employee-token')->plainTextToken;
-
-        return response()->json(['user' => $user, 'token' => $token]);
+        return response()->json(['user' => $user]);
     }
 
     /**
@@ -76,4 +91,28 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Logged out successfully']);
     }
+
+    /**
+     * Deletion of a user from the system
+     * 
+     * @param Request $request
+     * @return int $status
+     */
+    /*public function delete(Request $request, int $id)
+    {
+        $user = User::where('id', $id)->first(); // searchs for the first user where email
+                                                // value field matches with the one received
+
+        if (! $user) { // checks if received passwords hash matches with the stored one
+            throw ValidationException::withMessages([
+                'email' => ['User does not exist.'], // throws exception
+            ]);
+        }
+
+        $user->tokens()->delete(); // token deletion
+
+        User::destroy($user->id); // user deletion
+
+        return response()->json(['message' => 'User successfully removed from the system.']);
+    }*/
 }
