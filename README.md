@@ -81,7 +81,7 @@ php artisan migrate
 php artisan serve
 ```
 
-El servidor estará disponible en `http://localhost:8000`
+El servidor estará disponible en `http://127.0.0.1:8000`
 
 ---
 
