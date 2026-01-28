@@ -39,7 +39,7 @@ Asegúrate de tener instalados los siguientes componentes:
 ### 1. Clonar el Repositorio
 
 ```bash
-cd /home/binta/Documents/PlaytimeCO-API_proy/PlaytimeCO-api
+git clone https://github.com/bintidev/PlaytimeCO-API_proy.git
 ```
 
 ### 2. Instalar Dependencias
