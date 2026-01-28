@@ -6,10 +6,11 @@
 
 ## 🎮 Acerca de PlaytimeCO API
 
-**PlaytimeCO API** es una API REST desarrollada internamente para **Playtime Co**, la compañía de juguetes basada en el videojuego ***Poppy Playtime***. Esta API gestiona la autenticación y administración de usuarios del ecosistema de la plataforma.
+**PlaytimeCO API** es una API REST desarrollada internamente para **Playtime Co**, la compañía de juguetes basada más aclamada del momento. Esta API gestiona la autenticación y administración de usuarios del ecosistema de la plataforma.
 
 Actualmente, la API se enfoca en proporcionar funcionalidades de **autenticación de usuarios**, permitiendo registro, inicio de sesión, cierre de sesión y consulta de usuarios.
 
+> **Nota:** esta compañía no es real. es meramente ficción :)
 ---
 
 ## 🛠️ Tecnologías Utilizadas
