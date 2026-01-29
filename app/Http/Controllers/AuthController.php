@@ -98,21 +98,21 @@ class AuthController extends Controller
      * @param Request $request
      * @return int $status
      */
-    /*public function delete(Request $request, int $id)
+    public function delete(User $user)
     {
-        $user = User::where('id', $id)->first(); // searchs for the first user where email
+        $userFound = User::where('id', $user->id)->first(); // searchs for the first user where email
                                                 // value field matches with the one received
 
-        if (! $user) { // checks if received passwords hash matches with the stored one
+        if (! $userFound) { // checks if received passwords hash matches with the stored one
             throw ValidationException::withMessages([
                 'email' => ['User does not exist.'], // throws exception
             ]);
         }
 
-        $user->tokens()->delete(); // token deletion
+        $userFound->tokens()->delete(); // token deletion
 
-        User::destroy($user->id); // user deletion
+        User::destroy($userFound); // user deletion
 
         return response()->json(['message' => 'User successfully removed from the system.']);
-    }*/
+    }
 }

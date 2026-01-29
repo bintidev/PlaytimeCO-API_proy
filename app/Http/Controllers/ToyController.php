@@ -13,6 +13,7 @@ class ToyController extends Controller
     public function index()
     {
         $toys = Toy::all();
+
         return response()->json([
             'status' => true,
             'toys' => $toys
@@ -22,54 +23,86 @@ class ToyController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function setup()
+    /*public function create()
     {
         //
-    }
+    }*/
 
     /**
      * Store a newly experiment monitoring in storage
      */
-    public function monitor(Request $request)
+    public function store(Request $request)
     {
-        $toy = Toy::create($request->all());
+
+        $valid = $request->validate([
+            'supervisor' => 'nullable|string|max:255',
+            'alias' => 'required|string|max:255',
+            'name' => 'required|string|max:50',
+            'subject' => 'required|string|max:255',
+            'status' => 'required|enum:[Alive,Deceased]',
+            'creation_date' => 'required|date',
+            'species' => 'required|string|max:100',
+        ]);
+
+        if ($valid) {
+            $toy = Toy::create($valid);
+            $msj = "Toy successfully added to monitoring.";
+            $status = true;
+            $code = 200;
+        } else {
+            $toy = null;
+            $msj = "There was an error adding the toy to monitoring.";
+            $status = false;
+            $code = 500;
+        }
+        
 
         return response()->json([
-            'status' => true,
-            'message' => "Toy in monitoring phase.",
+            'status' => $status,
+            'message' => $msj,
             'toy' => $toy
-        ], 200);
+        ], $code);
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified toy.
      */
-    public function analize(Toy $toy)
+    public function show(Toy $toy)
     {
-        //
+        $display = Toy::find($toy->id);
+
+        return response()->json([
+            'status' => true,
+            'toy' => $display
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function process(Toy $toy)
+    /*public function edit(Toy $toy)
     {
         //
-    }
+    }*/
 
     /**
      * Update the specified resource in storage.
      */
-    public function transition(Request $request, Toy $toy)
+    /*public function update(Request $request, Toy $toy)
     {
         //
-    }
+    }*/
 
     /**
      * Remove the specified resource from storage.
      */
-    public function fail(Toy $toy)
+    public function destroy(Toy $toy)
     {
-        //
+        $toy->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Toy failed monitoring.'
+        ]);
     }
 }
