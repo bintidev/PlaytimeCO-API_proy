@@ -23,9 +23,9 @@ class ToyController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    /*public function create()
+    /*public function create(Request $request)
     {
-        //
+
     }*/
 
     /**
@@ -47,34 +47,39 @@ class ToyController extends Controller
         if ($valid) {
             $toy = Toy::create($valid);
             $msj = "Toy successfully added to monitoring.";
-            $status = true;
             $code = 200;
         } else {
             $toy = null;
             $msj = "There was an error adding the toy to monitoring.";
-            $status = false;
             $code = 500;
         }
         
-
         return response()->json([
-            'status' => $status,
             'message' => $msj,
             'toy' => $toy
         ], $code);
+
     }
+
 
     /**
      * Display the specified toy.
      */
     public function show(Toy $toy)
     {
+        $toy->validate([
+            'supervisor' => 'nullable|string',
+            'alias' => 'required|string',
+            'name' => 'required|string',
+            'subject' => 'required|string',
+            'status' => 'required|enum:[Alive,Deceased]',
+            'creation_date' => 'required|date',
+            'species' => 'required|string'
+        ]);
+
         $display = Toy::find($toy->id);
 
-        return response()->json([
-            'status' => true,
-            'toy' => $display
-        ]);
+        return response()->json(['toy' => $display]);
     }
 
     /**
@@ -96,13 +101,10 @@ class ToyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Toy $toy)
+    public function destroy(Request $request, Toy $toy)
     {
         $toy->delete();
 
-        return response()->json([
-            'status' => true,
-            'message' => 'Toy failed monitoring.'
-        ]);
+        return response()->json(['message' => 'Toy successfully removed from monitoring.']);
     }
 }

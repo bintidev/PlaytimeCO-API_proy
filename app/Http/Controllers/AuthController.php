@@ -20,13 +20,20 @@ class AuthController extends Controller
      * @param Request $request - request method
      * @return int $status - status response
      */
-    public function users()
+    public function users(Request $request)
     {
-        $user = User::all(); // user creation attempt
-        
-        //$token = $user->createToken('employee-token')->plainTextToken; // plain text token creation
 
-        return response()->json(['users' => $user], 201); // user and associated token
+        if (!$request->user())
+        {
+            return response()->json(['message' => 'Unauthorized access'], 401);
+        } else {
+            $user = User::all(); // user creation attempt
+
+            //$token = $user->createToken('employee-token')->plainTextToken; // plain text token creation
+
+            return response()->json(['users' => $user], 201); // user and associated token
+        }
+
     }
     /**
      * Validates data collected from registration form, ensuring
@@ -46,10 +53,8 @@ class AuthController extends Controller
         $validated['password'] = Hash::make($validated['password']); // password encryption
 
         $user = User::create($validated); // user creation attempt
-        
-        $token = $user->createToken('employee-token')->plainTextToken; // plain text token creation
 
-        return response()->json(['users' => $user, 'token' => $token], 201); // user and associated token
+        return response()->json(['users' => $user], 201); // user and associated token
     }
 
     /**
@@ -76,7 +81,9 @@ class AuthController extends Controller
             ]);
         }
 
-        return response()->json(['user' => $user]);
+        $token = $user->createToken('employee-token')->plainTextToken; // plain text token creation
+
+        return response()->json(['user' => $user, 'token' => $token], 200); // user and associated token
     }
 
     /**
