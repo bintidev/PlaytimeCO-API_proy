@@ -120,7 +120,7 @@ La API proporciona los siguientes endpoints para la autenticación de usuarios y
 - **Ruta:** `GET /api/users`
 - **Descripción:** Obtiene la lista completa de todos los usuarios registrados en el sistema
 - **Autenticación:** No requerida
-- **Captura:** ![Users List](pictures/users-list.png)
+- **Captura:** ![Users List](playtimeco-api/pictures/users-list.png)
 
 #### 2. **Registro de Usuario**
 - **Ruta:** `POST /api/register`
@@ -130,7 +130,7 @@ La API proporciona los siguientes endpoints para la autenticación de usuarios y
   - `name` (string, máx. 255 caracteres)
   - `email` (email único)
   - `password` (string, mínimo 8 caracteres, debe estar confirmado)
-- **Captura:** ![Register](pictures/register-user.png)
+- **Captura:** ![Register](playtimeco-api/pictures/register-user.png)
 
 #### 3. **Inicio de Sesión**
 - **Ruta:** `POST /api/login`
@@ -140,13 +140,13 @@ La API proporciona los siguientes endpoints para la autenticación de usuarios y
   - `name` (string)
   - `email` (email)
   - `password` (string)
-- **Captura:** ![Login](pictures/user-login.png)
+- **Captura:** ![Login](playtimeco-api/pictures/user-login.png)
 
 #### 4. **Cerrar Sesión**
 - **Ruta:** `POST /api/logout`
 - **Descripción:** Invalida todos los tokens del usuario autenticado, cerrando su sesión
 - **Autenticación:** Requerida (Bearer Token)
-- **Captura:** ![Logout](pictures/user-logout.png)
+- **Captura:** ![Logout](playtimeco-api/pictures/user-logout.png)
 
 ---
 
@@ -156,14 +156,14 @@ La API proporciona los siguientes endpoints para la autenticación de usuarios y
 - **Ruta:** `GET /api/toys`
 - **Descripción:** Obtiene la lista completa de todos los juguetes disponibles en el catálogo
 - **Autenticación:** No requerida
-- **Captura:** ![Toys List](pictures/toys-list.png)
+- **Captura:** ![Toys List](playtimeco-api/pictures/toys-list.png)
 
 #### 6. **Obtener un Juguete Específico**
 - **Ruta:** `GET /api/toys/{id}`
 - **Descripción:** Obtiene los detalles de un juguete específico por su ID
 - **Autenticación:** No requerida
 - **Parámetros:** `id` (integer) - ID del juguete
-- **Captura:** ![Toy Detail](pictures/toy-detail.png)
+- **Captura:** ![Toy Detail](playtimeco-api/pictures/toy-detail.png)
 
 #### 7. **Crear Nuevo Juguete**
 - **Ruta:** `POST /api/toys`
@@ -175,7 +175,7 @@ La API proporciona los siguientes endpoints para la autenticación de usuarios y
   - `price` (decimal)
   - `category` (string)
   - `stock` (integer)
-- **Captura:** ![Create Toy](pictures/store-toy.png)
+- **Captura:** ![Create Toy](playtimeco-api/pictures/store-toy.png)
 
 #### 8. **Actualizar Juguete**
 - **Ruta:** `PUT /api/toys/{id}`
@@ -183,7 +183,7 @@ La API proporciona los siguientes endpoints para la autenticación de usuarios y
 - **Autenticación:** Requerida (Bearer Token)
 - **Parámetros:** `id` (integer) - ID del juguete
 - **Campos opcionales:** `name`, `description`, `price`, `category`, `stock`
-- **Captura:** ![Update Toy](pictures/update-toy.png)
+- **Captura:** ![Update Toy](playtimeco-api/pictures/update-toy.png)
 
 #### 9. **Eliminar Juguete**
 - **Ruta:** `DELETE /api/toys/{id}`
