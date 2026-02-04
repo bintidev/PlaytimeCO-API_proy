@@ -221,19 +221,6 @@ Authorization: Bearer {tu_token_aqui}
 
 ---
 
-## 📊 Archivo de Ejemplo: user.json
-
-Utiliza el archivo `users.json` para importar usuarios de prueba en Postman:
-
-```json
-{
-    "name": "Claire Harper",
-    "email": "claire.harper@playtimeco.com",
-    "password": "harperpassword123",
-    "password_confirmation": "harperpassword123"
-}
-```
-
 ## 👤 Archivo de Ejemplo: user.json
 
 Utiliza el archivo `users.json` para importar usuarios de prueba en Postman:
