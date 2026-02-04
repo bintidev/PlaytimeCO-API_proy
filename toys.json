@@ -1,0 +1,38 @@
+[
+    {
+        "supervisor": 2,
+        "alias": "Huggy",
+        "name": "Huggy Wuggy",
+        "subject": 1770,
+        "status": "Alive",
+        "creation_date": "1990-10-02",
+        "species": "Bigger Body"
+    },
+    {
+        "supervisor": 1,
+        "alias": "Mommy",
+        "name": "Mommy Long Legs",
+        "subject": 1222,
+        "status": "Deceased",
+        "creation_date": "1991-01-24",
+        "species": "Living Toy"
+    },
+    {
+        "supervisor": 3,
+        "alias": "Theo",
+        "name": "CatNap",
+        "subject": 1188,
+        "status": "Deceased",
+        "creation_date": "1989-11-07",
+        "species": "Living Toy"
+    },
+    {
+        "supervisor": 4,
+        "alias": "The Doughman",
+        "name": "Doey",
+        "subject": 1322,
+        "status": "Alive",
+        "creation_date": "1950-07-29",
+        "species": "Bigger Body"
+    }
+]
