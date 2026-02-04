@@ -75,7 +75,9 @@ class AuthController extends Controller
             ]);
         }
 
-        return response()->json(['user' => $user], 200); // user and associated token
+        $token = $user->createToken('employee-token')->plainTextToken; // plain text token creation
+
+        return response()->json(['user' => $user, 'token' => $token], 200); // user and associated token
     }
 
     /**
